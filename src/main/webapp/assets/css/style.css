@@ -1,0 +1,84 @@
+:root {
+	--color-main: #212529;
+	--color-inicio: #99b9e9e5;
+	--color-thead: #4242424a;
+	--color-tbody: #6363634a;
+	--color-tbody-hover: #7e7e7e4a;
+	--color-text: white;
+	--color-text1: black;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.bd-sidebar{
+    width: 250px;
+}
+
+.navbar {
+	color: var(--color-main);
+	background-color: var(--color-inicio);
+}
+
+.nav-pills .nav-link.active {
+	background-color: var(--color-inicio);
+	color: black;
+}
+
+.img-perfil-contenedor {
+	height: 32px;
+	padding: 0px;
+	width: 32px;
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.img-perfil-contenedor .img-perfil {
+	height: 100%;
+	width: auto;
+}
+
+.nav-link {
+	color: var(--color-text);
+}
+
+.nav-link:hover {
+	background-color: var(--color-inicio);
+	color: var(--color-text1) !important;
+	/* border: 1px solid var(--color-inicio); */
+}
+
+.thead {background-color: var(--color-thead);}
+.tbody {background-color: var(--color-tbody);}
+
+.tbody tr:hover {
+	background-color: var(--color-tbody-hover);
+}
+
+.fa.fa-thumbs-up,
+.gracias {
+	color: var(--color-main);
+}
+
+.btn .btn-table {
+	width: 40px;
+	height: 40px;
+}
+
+.form {
+	background-color: var(--color-tbody);
+	color: var(--color-text);
+}
+
+.div-dropdown {
+	margin-top: -45px;
+}
+
+.btn .btn-submit:hover {color: var(--color-text)}
+
+.input-group-append {
+	cursor: pointer;
+}
