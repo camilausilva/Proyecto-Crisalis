@@ -11,7 +11,7 @@
 
     <!--FONT AWESOME-->
     <script src="https://kit.fontawesome.com/92cc7e66d3.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/CRISALIS/proyecto/css/package/css/font-awesome-animation.min.css">
+    <link rel="stylesheet" href="/CRISALIS/proyecto/assets/css/package/css/font-awesome-animation.min.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     <!--DATEPICKER-->
@@ -146,192 +146,42 @@
       
       <section class="col p-0 vh-100 overflow-auto">
         
+          <!--=========================================================================================
+                                                    NAVBAR
+          ===========================================================================================-->
+
+          <header id="navbar" class="navbar">
+            <div class="container-fluid justify-content-left">
+              <div class="dropstart">
+                <span class="fs-4 fw-bold text-nowrap">
+                  SE ENCUENTRA EN
+                  &nbsp;
+                  <i class="fa-solid fa-angles-right faa-passing animated"></i>
+                  &nbsp;
+                  <span id="sitio"></span>
+                </span>
+              </div>
+            </div>
+          </header>
+
         <!--=========================================================================================
-                                                  NAVBAR
+                                                  TABLAS
         ===========================================================================================-->
 
-        <header id="navbar" class="navbar">
-          <div class="container-fluid justify-content-left">
-            <div class="dropstart">
-              <span class="fs-4 fw-bold text-nowrap">
-                SE ENCUENTRA EN
-                &nbsp;
-                <i class="fa-solid fa-angles-right faa-passing animated"></i>
-                &nbsp;
-                <span id="sitio"></span>
-              </span>
-            </div>
-          </div>
-        </header>
-
-    <!--=========================================================================================
-                                              TABLAS
-    ===========================================================================================-->
-
         <section class="mt-5 ms-5 me-5 shadow">
-        
-          <table class="table text-white">
-
-            <thead class="thead">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                <th scope="col">Acciones</th>
-              </tr>
-            </thead>
-
-            <tbody class="tbody">
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>
-                  <button type="button" class="btn btn-light">
-                    <i class="fas fa-pen"></i>
-                  </button>
-                  <button type="button" class="btn btn-light">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td class="">
-                  <button type="button" class="btn btn-light">
-                    <i class="fas fa-pen"></i>
-                  </button>
-                  <button type="button" class="btn btn-light">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-                <td>
-                  <button type="button" class="btn btn-table btn-light">
-                    <i class="fas fa-pen"></i>
-                  </button>
-                  <button type="button" class="btn btn-table btn-light">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-
-          </table>
 
         </section>
 
-    <!--=========================================================================================
-                                              FORMS
-    ===========================================================================================-->
+        <!--=========================================================================================
+                                                  FORMS
+        ===========================================================================================-->
 
-      <section class="mt-5 ms-5 me-5 shadow">
-
-        <form class="form form-cliente p-5">
-          <h2>COMPLETE LOS CAMPOS DEL CLIENTE</h2>
-          <div class="div-dropdown d-flex justify-content-end">
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  Tipo de Cliente: Persona
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" >
-                  <li><a class="dropdown-item" href="#" id="dropdown-cliente-persona">Persona</a></li>
-                  <li><a class="dropdown-item" href="#" id="dropdown-cliente-empresa">Empresa</a></li>
-                </ul>
-              </div>
-          </div>
-
-          <hr>
-
-        <div class="row mb-4">
-
-
-          <div class="col">
-
-            <!--PERSONA-->
-            <div class="form-outline form-cliente-persona">
-              <input type="text" id="inputNombre" class="form-control" 
-              onkeypress="return valideKeyString(event);"/>
-              <label class="form-label" for="inputNombre">Nombre</label>
-            </div>
-            
-            <!--EMPRESA-->
-            <div class="form-outline form-cliente-empresa">
-              <input type="text" id="inputRazonSocial" class="form-control" 
-              onkeypress="return valideKeyString(event);"/>
-              <label class="form-label" for="inputRazonSocial">Razón Social</label> 
-            </div>
-
-          </div>
-
-          <div class="col">
-
-              <!--PERSONA-->
-              <div class="form-outline form-cliente-persona">
-                <input type="text" id="inputApellido" class="form-control" 
-                onkeypress="return valideKeyString(event);"/>
-                <label class="form-label" for="inputApellido">Apellido</label>
-              </div>
-
-              <!--EMPRESA-->
-              <div class="input-group date form-cliente-empresa" id="datepicker">
-                <input type="text" class="form-control" id="date"/>
-                <span class="input-group-append">
-                  <span class="input-group-text bg-light d-block">
-                    <i class="fa fa-calendar"></i>
-                  </span>
-                </span>
-              </div>
-              <label class="form-label form-cliente-empresa" for="date">Inicio de Actividades</label>
+          <!--SECTION FORM-->
+        <section class="mt-5 ms-5 me-5 shadow">
           
-          </div>
+        </section>
 
-          <div class="col">
-            
-            <!--PERSONA-->
-            <div class="form-outline form-cliente-persona">
-              <input type="number" min="0" id="inputDni" class="form-control" onkeypress="return valideKeyNumber(event);"/>
-              <label class="form-label" for="inputDni">DNI</label>
-            </div>
-    
-              <!--EMPRESA-->
-            <div class="form-outline form-cliente-empresa">
-              <input type="number" min="0" id="inputCuit" class="form-control" onkeypress="return valideKeyNumber(event);"/>
-              <label class="form-label" for="inputCuit">CUIT</label>
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- Email input
-        <div class="form-outline mb-4">
-        <input type="email" id="form3Example3" class="form-control" />
-        <label class="form-label" for="form3Example3">Email address</label>
-        </div>
-
-        Password input
-        <div class="form-outline mb-4">
-        <input type="password" id="form3Example4" class="form-control" />
-        <label class="form-label" for="form3Example4">Password</label>
-        </div> -->
-
-        <button type="submit" class="btn btn-dark btn-block mb-3 text-white">ACTUALIZAR DATOS</button>
-
-             </div>
-        </form>
       </section>
-
-    </section>
 
 
     </main>
