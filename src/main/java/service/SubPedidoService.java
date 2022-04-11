@@ -3,32 +3,32 @@ package service;
 import java.sql.SQLException;
 import java.util.List;
 
-import dao.imp.ProductoDAOImp;
-import model.Producto;
+import dao.imp.SubPedidoDAOImp;
+import model.SubPedido;
 
-public class ProductoService extends ProductoDAOImp {
+public class SubPedidoService extends SubPedidoDAOImp {
 	@Override
-	public List<Producto> findAll()  throws SQLException {
+	public List<SubPedido> findAll() throws SQLException {
 		return super.findAll();
 	}
-	
-	@Override	
+
+	@Override
 	public int countAll() throws SQLException {
-		 return super.countAll();	
+		return super.countAll();
 	}
-	
-	@Override	
-	public int insert(Producto t) throws SQLException {
+
+	@Override
+	public int insert(SubPedido t) throws SQLException {
 		return super.insert(t);
 	}
 
 	@Override
-	public int update(Producto t) throws SQLException {
+	public int update(SubPedido t) throws SQLException {
 		return super.update(t);
 	}
-	
+
 	@Override
-	public int delete(Producto t) throws SQLException {
+	public int delete(SubPedido t) throws SQLException {
 		return super.delete(t);
 	}
 
@@ -36,22 +36,22 @@ public class ProductoService extends ProductoDAOImp {
 	public int deleteBy(String campo, String operador, String valor) throws SQLException {
 		return super.deleteBy(campo, operador, valor);
 	}
-	
+
 	@Override
-	public Producto findBy(String campo, String operador, String valor) throws SQLException {
+	public SubPedido findBy(String campo, String operador, String valor) throws SQLException {
 		return super.findBy(campo, operador, valor);
 	}
 
 	@Override
-	public Producto findById(int id) throws SQLException {
+	public SubPedido findById(int id) throws SQLException {
 		return super.findById(id);
 	}
-	
+
 	@Override
-	public List<Producto> findAllBy(String campo, String operador, String valor)  throws SQLException{
+	public List<SubPedido> findAllBy(String campo, String operador, String valor) throws SQLException {
 		return super.findAllBy(campo, operador, valor);
 	}
-	
+
 	@Override
 	public int updateEstado(Integer id, Integer valor) throws SQLException {
 		return super.updateEstado(id, valor);

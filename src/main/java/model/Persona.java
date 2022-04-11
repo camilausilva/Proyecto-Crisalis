@@ -61,8 +61,4 @@ public class Persona extends Cliente {
 		this.apellido = apellido;
 	}
 	
-	
-	
-	
-	
 }

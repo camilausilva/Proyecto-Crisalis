@@ -19,11 +19,9 @@ public class PedidoDAOImp implements PedidoDAO {
 												    new ArrayList<String>() {{
 												        add("id");
 												        add("idCliente");
-												        add("montoBase");
-												        add("costoAdicional");
+												        add("monto");
 												        add("estado");
 												        add("fecha");
-												        add("idSolicitante");
 												    }});
 	
 	private static final List<String> tipos = 	Collections.unmodifiableList(
@@ -31,10 +29,8 @@ public class PedidoDAOImp implements PedidoDAO {
 											    	add("Int");
 											        add("Int");
 											        add("Double");
-											        add("Double");
 											        add("Boolean");
 											        add("Date");
-											        add("Int");
 											    }});
 
 	List<String> values= new ArrayList<String> (); 
@@ -65,11 +61,9 @@ public class PedidoDAOImp implements PedidoDAO {
 		
 		values.add(t.getId().toString());
 		values.add(t.getIdCliente().toString());
-		values.add(t.getMontoBase().toString());
-		values.add(t.getCostoAdicional().toString());
+		values.add(t.getMonto().toString());
 		values.add(t.getEstado().toString());
 		values.add(t.getFecha().toString());
-		values.add(t.getIdSolicitante().toString());
 	
 		return CRUD.insert("pedido", columnas, tipos, values);
 	}
@@ -85,11 +79,9 @@ public class PedidoDAOImp implements PedidoDAO {
 		
 		values.add(t.getId().toString());
 		values.add(t.getIdCliente().toString());
-		values.add(t.getMontoBase().toString());
-		values.add(t.getCostoAdicional().toString());
+		values.add(t.getMonto().toString());
 		values.add(t.getEstado().toString());
 		values.add(t.getFecha().toString());
-		values.add(t.getIdSolicitante().toString());
 				
 		return CRUD.update("pedido", columnas, tipos, values, condicion);
 	}
@@ -113,14 +105,12 @@ public class PedidoDAOImp implements PedidoDAO {
 	@Override
 	public Pedido findBy(String campo, String operador, String valor) throws SQLException {
 		String condicion = campo + " " + operador + " " + valor;
-		Pedido Pedido = new Pedido(null, null, null, null, null, null, null);
+		Pedido Pedido = new Pedido(null, null, null, null, null, null);
 		ResultSet rs = CRUD.select("pedido", "*", condicion);
 		if(rs.next()) {
 			Pedido.setId(rs.getInt("id"));
 			Pedido.setCliente(clienteDAOImp.findById(rs.getInt("idCliente")));
-			Pedido.setSolicitante(clienteDAOImp.findById(rs.getInt("idSolicitante")));
-			Pedido.setMontoBase(rs.getDouble("montoBase"));
-			Pedido.setCostoAdicional(rs.getDouble("costoAdicional"));
+			Pedido.setMonto(rs.getDouble("monto"));
 			Pedido.setEstado(rs.getBoolean("estado"));
 			Pedido.setFecha(rs.getDate("fecha"));
 		}
@@ -150,8 +140,7 @@ public class PedidoDAOImp implements PedidoDAO {
 		while (rs.next())
 			listaDePedido.add(new Pedido(	rs.getInt("id"),
 											clienteDAOImp.findById(rs.getInt("idCliente")),
-											clienteDAOImp.findById(rs.getInt("idSolicitante")),
-											rs.getDouble("montoBase"),
+											rs.getDouble("monto"),
 											rs.getDouble("costoAdicional"),
 											rs.getBoolean("estado"),
 											rs.getDate("fecha")));		

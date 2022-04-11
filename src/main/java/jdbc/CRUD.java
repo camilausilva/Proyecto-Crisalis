@@ -120,7 +120,7 @@ public class CRUD {
 	
 	
 	public static int updateEstado(String tabla, Integer valueEstado, String columnaID, Integer valueID) throws SQLException {
-		String query = "UPDATE " + tabla + " SET  activo = " + valueEstado + " WHERE " + columnaID + " = " + valueID;
+		String query = "UPDATE " + tabla + " SET  estado = " + valueEstado + " WHERE " + columnaID + " = " + valueID;
 		
 		Connection connection = JavaConnection.getConnection();
 		PreparedStatement datos = connection.prepareStatement(query);

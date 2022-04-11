@@ -1,12 +1,13 @@
-USE master
+USE MASTER
 
-CREATE DATABASE db
+CREATE DATABASE crisalis_db
 
-USE db
+USE crisalis_db
 
 CREATE TABLE [cliente] (
   id INT NOT NULL IDENTITY(1,1),
   tipo INT NOT NULL,
+  estado TINYINT NOT NULL,
   PRIMARY KEY (id)
 )
 
@@ -23,50 +24,11 @@ CREATE TABLE [persona] (
 CREATE TABLE [empresa] (
   id INT NOT NULL IDENTITY(1,1),
   idCliente INT NOT NULL,
-  razonSocial VARCHAR(45) NOT NULL,
-  inicioActividad DATE NOT NULL,
+  razon_social VARCHAR(45) NOT NULL,
+  inicio_actividad DATE NOT NULL,
   CUIT INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY(idCliente) REFERENCES cliente(id)    
-)
-
-CREATE TABLE [pedido] (
-  id INT NOT NULL,
-  idCliente INT NOT NULL,
-  montoBase DECIMAL NOT NULL,
-  costoAdicional DECIMAL NULL,
-  estado TINYINT NOT NULL,
-  fecha DATE NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY(idCliente) REFERENCES cliente(id)
-)
-
-CREATE TABLE [producto]  (
-  id INT NOT NULL,
-  cantAnios INT NULL,
-  PRIMARY KEY (id),
-)
-
-CREATE TABLE [servicio] (
-  id INT NOT NULL,
-  cantMeses INT NULL,
-  PRIMARY KEY (id)
-)
-
-CREATE TABLE [pedido_producto] (
-  idProducto INT NOT NULL,
-  idPedido INT NOT NULL,
-  PRIMARY KEY (idProducto, idPedido),
-  FOREIGN KEY(idProducto) REFERENCES producto(id),
-  FOREIGN KEY(idPedido) REFERENCES pedido(id)
-)
-
-CREATE TABLE [pedido_servicio] (
-  idServicio INT NOT NULL,
-  idPedido INT NOT NULL,
-  PRIMARY KEY (idServicio, idPedido),
-  FOREIGN KEY(idServicio) REFERENCES servicio(id),
-  FOREIGN KEY(idPedido) REFERENCES pedido(id)
 )
 
 CREATE TABLE [empresa_persona] (
@@ -75,4 +37,33 @@ CREATE TABLE [empresa_persona] (
   PRIMARY KEY (idPersona, idEmpresa),
   FOREIGN KEY(idPersona) REFERENCES persona(id),
   FOREIGN KEY(idEmpresa) REFERENCES empresa(id)
+)
+
+CREATE TABLE [pedido] (
+  id INT NOT NULL IDENTITY(1,1),
+  idCliente INT NOT NULL,
+  monto DECIMAL NOT NULL,
+  estado TINYINT NOT NULL,
+  fecha DATE NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY(idCliente) REFERENCES cliente(id)
+)
+
+CREATE TABLE [sub_pedido] (
+	id INT NOT NULL IDENTITY(1,1),
+	tipo INT NOT NULL,
+	nombre VARCHAR(45) NOT NULL,
+	precio DECIMAL NOT NULL,
+	tiempo INT NULL,
+	descripcion VARCHAR(255) NULL,
+	estado TINYINT NOT NULL,
+	PRIMARY KEY(id)
+)
+
+CREATE TABLE [pedido_sub_pedido] (
+	idPedido INT NOT NULL,
+	idSubPedido INT NOT NULL,
+	PRIMARY KEY (idPedido, idSubPedido),
+	FOREIGN KEY (idPedido) REFERENCES pedido(id),
+	FOREIGN KEY (idSubPedido) REFERENCES sub_pedido(id)
 )

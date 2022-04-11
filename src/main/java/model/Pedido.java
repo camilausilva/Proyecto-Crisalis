@@ -10,9 +10,7 @@ public class Pedido {
 								DESCUENTO = 0.10;
 	Integer id;
 	Cliente cliente;
-	Cliente solicitante;
-	Double 	montoBase, 
-			costoAdicional;
+	Double 	monto;
 	Boolean estado;
 	Date fecha;
 	
@@ -21,8 +19,14 @@ public class Pedido {
 	/* GETTERS                                                          */
 	/*------------------------------------------------------------------*/
 	
-	public Double getMontoBase() {
-		return montoBase;
+	public Integer getId() {
+		return id;
+	}
+	public Cliente getIdCliente() {
+		return cliente;
+	}
+	public Double getMonto() {
+		return monto;
 	}
 	public Boolean getEstado() {
 		return estado;
@@ -30,18 +34,7 @@ public class Pedido {
 	public Date getFecha() {
 		return fecha;
 	}
-	public Double getCostoAdicional() {
-		return costoAdicional;
-	}
-	public Integer getId() {
-		return id;
-	}
-	public Cliente getIdCliente() {
-		return cliente;
-	}
-	public Cliente getIdSolicitante() {
-		return solicitante;
-	}
+
 	
 	/*------------------------------------------------------------------*/
 	/* SETTERS                                                          */
@@ -50,8 +43,11 @@ public class Pedido {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public void setMontoBase(Double montoBase) {
-		this.montoBase = montoBase;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	public void setMonto(Double monto) {
+		this.monto = monto;
 	}
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
@@ -59,35 +55,18 @@ public class Pedido {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public void setCostoAdicional(Double costoAdicional) {
-		this.costoAdicional = costoAdicional;
-	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-	public void setSolicitante(Cliente solicitante) {
-		this.solicitante = solicitante;
-	}
 	
 	/*------------------------------------------------------------------*/
 	/* CONSTRUCTOR                                                      */
 	/*------------------------------------------------------------------*/
 
-	public Pedido(Integer id, Cliente cliente, Cliente solicitante, Double montoBase, Double costoAdicional,
+	public Pedido(Integer id, Cliente cliente, Double monto, Double costoAdicional,
 			Boolean estado, Date fecha) {
 		this.id = id;
 		this.cliente = cliente;
-		this.solicitante = solicitante;
-		this.montoBase = montoBase;
-		this.costoAdicional = costoAdicional;
+		this.monto = monto;
 		this.estado = estado;
 		this.fecha = fecha;
 	}
-	
-	/*------------------------------------------------------------------*/
-	/* MÉTODOS                                                          */
-	/*------------------------------------------------------------------*/
-
-
 	
 }

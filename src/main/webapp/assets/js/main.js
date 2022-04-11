@@ -1,5 +1,3 @@
-console.log(document.querySelector('title').textContent)
-
 var elemento = document.getElementById('elemento');
 var posicion = elemento.getBoundingClientRect();
 var navbar = document.getElementById('navbar');
@@ -21,22 +19,26 @@ function imprimir(obj) {
     }
 }
 
-document.getElementById('dropdown-cliente-persona').addEventListener('click', function(){
-  formEmpresa.hide();
-  formPersona.show();
-  $("#dropdownMenuButton1").html("Persona");
-  
-  this.classList.add("active");
-  $("#dropdown-cliente-empresa").removeClass(" active");
-})
 
-document.getElementById('dropdown-cliente-empresa').addEventListener('click', function(){
-  formPersona.hide();
-  formEmpresa.show();
-  $("#dropdownMenuButton1").html("Empresa");
-  this.classList.add("active");
-  $("#dropdown-cliente-persona").removeClass(" active");
-})
+if ( $(".form-cliente").length ) {
+  document.getElementById('dropdown-cliente-persona').addEventListener('click', function(){
+    formEmpresa.hide();
+    formPersona.show();
+    $("#dropdownMenuButton1").html("Persona");
+    
+    this.classList.add("active");
+    $("#dropdown-cliente-empresa").removeClass(" active");
+  })
+  
+  document.getElementById('dropdown-cliente-empresa').addEventListener('click', function(){
+    formPersona.hide();
+    formEmpresa.show();
+    $("#dropdownMenuButton1").html("Empresa");
+    this.classList.add("active");
+    $("#dropdown-cliente-persona").removeClass(" active");
+  })
+  
+}
 
 document.getElementById('btn-acerca-de').addEventListener('click', function(){
     Swal.fire({
@@ -55,7 +57,6 @@ document.getElementById('btn-acerca-de').addEventListener('click', function(){
         color: '#fff'
       })
 })
-
 
 function valideKeyNumber(evt){
     var code = (evt.which) ? evt.which : evt.keyCode;
@@ -80,5 +81,8 @@ function valideKeyString(evt){
 }
 
 $(function(){
-  $('#datepicker').datepicker();
+  $('#datepicker').datepicker({
+	format: 'yyyy/mm/dd', 
+	startDate: '-3d'
+	});
 });

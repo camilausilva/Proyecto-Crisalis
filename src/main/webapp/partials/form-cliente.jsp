@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 <form class="form form-cliente p-5">
 
     <h2>COMPLETE LOS CAMPOS DEL CLIENTE</h2>
@@ -29,7 +32,7 @@
         <div class="form-outline form-cliente-empresa">
           <input type="text" id="inputRazonSocial" class="form-control" 
           onkeypress="return valideKeyString(event);"/>
-          <label class="form-label" for="inputRazonSocial">Razón Social</label> 
+          <label class="form-label" for="inputRazonSocial">Raz&oacute;n Social</label> 
         </div>
       </div>
 
@@ -69,7 +72,7 @@
     </div>
     
     <select class="form-select " aria-label="Default select example">
-      <option selected>¿Pertenece a una Empresa?</option>
+      <option selected>�Pertenece a una Empresa?</option>
       <option value="0">Ninguna</option>
       <option value="1">One</option>
       <option value="2">Two</option>

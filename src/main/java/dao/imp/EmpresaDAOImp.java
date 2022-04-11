@@ -20,8 +20,8 @@ public class EmpresaDAOImp implements EmpresaDAO {
 												    	add("idCliente");
 												        add("id");
 												        add("cuit");
-												        add("razonSocial");
-												        add("inicioActividad");
+												        add("razon_social");
+												        add("inicio_actividad");
 												    }});
 	
 	private static final List<String> tipos = 	Collections.unmodifiableList(
@@ -115,8 +115,8 @@ public class EmpresaDAOImp implements EmpresaDAO {
 			Empresa.setTipo(1);
 			Empresa.setId(rs.getInt("id"));
 			Empresa.setCuit(rs.getInt("cuit"));
-			Empresa.setRazonSocial(rs.getString("razonSocial"));
-			Empresa.setInicioActividad(rs.getDate("inicioActividad"));
+			Empresa.setRazonSocial(rs.getString("razon_social"));
+			Empresa.setInicioActividad(rs.getDate("inicio_actividad"));
 		}
 		
 //		String call = "{call ADDFACULTYDEPTSAL(?,?,?)}";
@@ -156,8 +156,8 @@ public class EmpresaDAOImp implements EmpresaDAO {
 											1,
 											rs.getInt("id"),
 											rs.getInt("cuit"),
-											rs.getString("razonSocial"),
-											rs.getDate("inicioActividad")));		
+											rs.getString("razon_social"),
+											rs.getDate("inicio_actividad")));		
 		
 		return listaDeEmpresa;
 	}
