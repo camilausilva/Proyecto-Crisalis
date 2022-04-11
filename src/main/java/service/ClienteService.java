@@ -1,6 +1,7 @@
 package service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.imp.ClienteDAOImp;
@@ -55,5 +56,10 @@ public class ClienteService extends ClienteDAOImp {
 	@Override
 	public int updateEstado(Integer id, Integer valor) throws SQLException {
 		return super.updateEstado(id, valor);
+	}
+
+	@Override
+	public ArrayList<List<String>> getClientes() throws SQLException {
+		return super.getClientes();
 	}
 }
