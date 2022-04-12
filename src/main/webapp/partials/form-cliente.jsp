@@ -1,14 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+    
+<%@page import="dao.imp.EmpresaDAOImp" %>
 
-<form class="form form-cliente p-5">
+<%@page import="service.EmpresaService" %>
+
+<%@page import="java.util.List"%>
+
+<form class="form form-cliente p-5" method="post" action="#">
 
     <h2>COMPLETE LOS CAMPOS DEL CLIENTE</h2>
 
     <div class="div-dropdown d-flex justify-content-end">
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            Tipo de Cliente: Persona
+            Tipo de Empresa: Persona
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" >
             <li><a class="dropdown-item" href="#" id="dropdown-cliente-persona">Persona</a></li>
@@ -71,14 +79,23 @@
       
     </div>
     
-    <select class="form-select " aria-label="Default select example">
-      <option selected>¿Pertenece a una Empresa?</option>
-      <option value="0">Ninguna</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-
+    
+    <div class="form-outline form-cliente-persona">
+		<label class="form-label" for="select-cliente">¿Pertenece a una Empresa?</label>
+	    <select class="form-select " aria-label="Default select example" name="select-cliente" id="select-cliente">
+	    <option value="0" selected>Ninguna</option>
+		
+		<% 
+	      	EmpresaService empS;
+			empS = new EmpresaService();
+			List<List<String>> lst = empS.getEmpresas();
+	      	for(int i = 0; i < lst.size(); i++) { %>
+	      		<option value="<%=lst.get(i).get(0)%>"><%=lst.get(i).get(1)%></option>
+	      <%} 
+	    %>
+	    </select>
+    </div>
+	
     <button type="submit" class="btn btn-dark btn-block mt-5 mb-3 text-white">ACTUALIZAR DATOS</button>
 
 </form>

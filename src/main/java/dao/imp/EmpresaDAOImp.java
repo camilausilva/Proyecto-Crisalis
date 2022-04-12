@@ -3,6 +3,7 @@ package dao.imp;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,7 +13,6 @@ import model.Empresa;
 
 public class EmpresaDAOImp implements EmpresaDAO {
 	
-	EmpresaDAOImp Empresa = new EmpresaDAOImp();
 	ClienteDAOImp clienteDAOImp = new ClienteDAOImp();
 	
 	private static final List<String>  columnas = 	Collections.unmodifiableList(
@@ -166,6 +166,21 @@ public class EmpresaDAOImp implements EmpresaDAO {
 	
 	public int updateEstado(Integer id, Integer valor) throws SQLException {
 		return CRUD.updateEstado("Empresa", valor, "id", id);
+	}
+	
+	public ArrayList<List<String>> getEmpresas() throws SQLException {
+		
+		ArrayList<List<String>> empresas = new ArrayList<List<String>>();
+		String query = "SELECT id, razon_social FROM empresa";
+		
+		ResultSet rs = CRUD.executeQuery(query);
+		
+		while (rs.next())
+			empresas.add(new ArrayList<String>(Arrays.asList(	String.valueOf(rs.getInt("id")),
+																rs.getString("razon_social"))));
+			
+		
+		return empresas;
 	}
 	
 }

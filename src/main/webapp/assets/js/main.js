@@ -12,10 +12,23 @@ navbar.style.height = `${posicion.top + elemento.style.height}px`;
 Array.prototype.filter.call(navlink, imprimir)
 
 function imprimir(obj) {
+	
     if(obj.innerText.toUpperCase() !== " ACERCA DE...") {
-        obj.addEventListener('click', function(){    
-            document.getElementById('sitio').innerHTML = this.innerText.toUpperCase();
+        obj.addEventListener('click', function(){ 
+	   
+			var msg = this.innerText.toUpperCase();
+			
+			document.getElementById('sitio').innerHTML = msg;
+			
+			if(msg == " CLIENTES")
+				console.log("table y form clientes")
+			else if(msg == " PEDIDOS")
+				console.log("table y form pedidos")
+			else if(msg == " PRODUCTOS" || msg == " SERVICIOS")
+				console.log("table y form sub pedidos")
+				
         })
+
     }
 }
 
@@ -50,7 +63,7 @@ document.getElementById('btn-acerca-de').addEventListener('click', function(){
         showCloseButton: true,
         focusConfirm: false,
         confirmButtonText:
-          '<i class="fa fa-thumbs-up"></i> <span class="gracias">¡GRACIAS!</span>',
+          '<i class="fa fa-thumbs-up"></i> <span class="gracias">GRACIAS</span>',
         confirmButtonAriaLabel: 'Thumbs up, great!',
         confirmButtonColor: '#99b9e9e5',
         background: '#212529',
