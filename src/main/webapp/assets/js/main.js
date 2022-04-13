@@ -2,10 +2,34 @@ var elemento = document.getElementById('elemento');
 var posicion = elemento.getBoundingClientRect();
 var navbar = document.getElementById('navbar');
 var navlink = document.getElementsByClassName('nav-link');
+
+var tableCliente = $('.table-cliente');
+var formCliente = $('.form-cliente');
 var formPersona = $('.form-cliente-persona');
 var formEmpresa = $('.form-cliente-empresa');
+var tablePedido = $('.table-pedido');
+var formPedido = $('.form-pedido');
+var tableSubPedido = $('.table-subpedido');
+var btnCollapse = $('.btn-collapse');
+var formSubpedido = $('.form-subpedido');
+var formProducto = $('.form-subpedido-producto');
+var formServicio = $('.form-subpedido-servicio');
 
+tableCliente.hide();
+formCliente.hide();
 formEmpresa.hide();
+
+tablePedido.hide();
+formPedido.hide();
+
+tableSubPedido.hide();
+formSubpedido.hide();
+
+btnCollapse.hide();
+
+formServicio.hide();
+
+document.getElementById('sitio').innerHTML = " HOME";
 
 navbar.style.height = `${posicion.top + elemento.style.height}px`;
 
@@ -16,18 +40,31 @@ function imprimir(obj) {
     if(obj.innerText.toUpperCase() !== " ACERCA DE...") {
         obj.addEventListener('click', function(){ 
 	   
-			var msg = this.innerText.toUpperCase();
-			
-			document.getElementById('sitio').innerHTML = msg;
-			
-			if(msg == " CLIENTES")
-				console.log("table y form clientes")
-			else if(msg == " PEDIDOS")
-				console.log("table y form pedidos")
-			else if(msg == " PRODUCTOS" || msg == " SERVICIOS")
-				console.log("table y form sub pedidos")
-				
-        })
+        var msg = this.innerText.toUpperCase();
+        
+        document.getElementById('sitio').innerHTML = msg;   
+
+		tableCliente.hide();
+		formCliente.hide();
+		tablePedido.hide();
+		formPedido.hide();
+		tableSubPedido.hide();
+		formSubpedido.hide();
+		formEmpresa.hide();
+		btnCollapse.show();
+
+        if(msg == " CLIENTES") {
+          tableCliente.show();
+          formCliente.show();
+        } else if(msg == " PEDIDOS") {
+          tablePedido.show();
+          formPedido.show();
+        } else {
+          tableSubPedido.show();
+          formSubpedido.show();
+        }
+
+      })
 
     }
 }
@@ -50,7 +87,24 @@ if ( $(".form-cliente").length ) {
     this.classList.add("active");
     $("#dropdown-cliente-persona").removeClass(" active");
   })
-  
+}
+
+if($('.form-subpedido').length) {
+  document.getElementById('dropdown-producto').addEventListener('click',function(){
+    formProducto.show();
+    formServicio.hide();
+    $("#dropdownMenuButton2").html("Producto");
+    this.classList.add("active");
+    $("#dropdown-servicio").removeClass(" active");
+  })
+
+  document.getElementById('dropdown-servicio').addEventListener('click',function(){
+    formServicio.show();
+    formProducto.hide();
+    $("#dropdownMenuButton2").html("Servicio");
+    this.classList.add("active");
+    $("#dropdown-producto").removeClass(" active");
+  })
 }
 
 document.getElementById('btn-acerca-de').addEventListener('click', function(){

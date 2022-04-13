@@ -15,8 +15,10 @@
 
     <div class="div-dropdown d-flex justify-content-end">
         <div class="dropdown">
+			<label>¿Persona o Empresa?</label>
+			&nbsp;
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            Tipo de Empresa: Persona
+            Persona
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" >
             <li><a class="dropdown-item" href="#" id="dropdown-cliente-persona">Persona</a></li>

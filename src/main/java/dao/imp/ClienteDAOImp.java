@@ -148,8 +148,9 @@ public class ClienteDAOImp implements ClienteDAO {
 						+ "    ISNULL((SELECT razon_social"
 						+ "     FROM empresa"
 						+ "     INNER JOIN empresa_persona ON empresa_persona.idEmpresa = empresa.id"
-						+ "     AND empresa_persona.idPersona = p.id), '') AS 'pertenece_a'"
-						+ "FROM"
+						+ "     AND empresa_persona.idPersona = p.id), '') AS 'pertenece_a',"
+						+ "     c.estado"
+						+ " FROM"
 						+ "    cliente c"
 						+ " LEFT JOIN empresa e ON e.idCliente = c.id"
 						+ " LEFT JOIN persona p ON p.idCliente = c.id";
@@ -162,7 +163,8 @@ public class ClienteDAOImp implements ClienteDAO {
 																rs.getString("nombre_razon"),
 																rs.getString("DNI_CUIT"),
 																rs.getString("inicio_actividad"),
-																rs.getString("pertenece_a"))));
+																rs.getString("pertenece_a"),
+																String.valueOf(rs.getInt("estado")))));
 			
 		
 		return clientes;

@@ -3,6 +3,7 @@ package dao.imp;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -146,18 +147,18 @@ public class SubPedidoDAOImp implements SubPedidoDAO {
 			condicion = campo + " " + operador + " " + valor;
 		
 		String query = "SELECT"
-					+ "    ped.id idPedido,"
-					+ "    ped.idCliente,"
-					+ "    ped.idSolicitante,"
-					+ "    ped.precio,"
-					+ "    ped.costoAdicional,"
-					+ "    ped.estado,"
-					+ "    ped.fecha,"
-					+ "    prod.id,"
-					+ "    prod.cantAnios"
-					+ "FROM sub_pedido prod"
-					+ "INNER JOIN pedido_sub_pedido ped_prod ON ped_prod.idSubPedido = prod.id"
-					+ "INNER JOIN pedido ped ON ped_prod.idPedido = ped.id";
+				+ "    ped.id idPedido,"
+				+ "    ped.idCliente,"
+				+ "    ped.idSolicitante,"
+				+ "    ped.precio,"
+				+ "    ped.costoAdicional,"
+				+ "    ped.estado,"
+				+ "    ped.fecha,"
+				+ "    prod.id,"
+				+ "    prod.cantAnios"
+				+ "FROM sub_pedido prod"
+				+ "INNER JOIN pedido_sub_pedido ped_prod ON ped_prod.idSubPedido = prod.id"
+				+ "INNER JOIN pedido ped ON ped_prod.idPedido = ped.id";
 		
 		if(!condicion.equals(""))
 			query += " WHERE " + condicion;
@@ -179,6 +180,35 @@ public class SubPedidoDAOImp implements SubPedidoDAO {
 	
 	public int updateEstado(Integer id, Integer valor) throws SQLException {
 		return CRUD.updateEstado("sub_pedido", valor, "id", id);
+	}
+	
+	
+	public ArrayList<List<String>> getSubPedidos() throws SQLException {
+		
+		ArrayList<List<String>> subpedidos = new ArrayList<List<String>>();
+		
+		String query = "select"
+				+ "    id as 'id',"
+				+ "    CASE WHEN (tipo = 0) THEN "
+				+ "        'Producto'"
+				+ "    ELSE "
+				+ "        'Servicio'"
+				+ "    END AS 'tipo',"
+				+ "    nombre,"
+				+ "    REPLACE(TRIM(REPLACE(ROUND((precio * 1.21) * 1.035,2), '0', ' ')), ' ', '0') as 'precio',"
+				+ "    descripcion"
+				+ " from sub_pedido";
+		
+		ResultSet rs = CRUD.executeQuery(query);
+		
+		while (rs.next())
+			subpedidos.add(new ArrayList<String>(Arrays.asList(	String.valueOf(rs.getInt("id")),
+																rs.getString("tipo"),
+																rs.getString("nombre"),
+																rs.getString("precio"),
+																rs.getString("descripcion"))));
+		
+		return subpedidos;
 	}
 	
 }

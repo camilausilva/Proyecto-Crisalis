@@ -21,8 +21,15 @@
 				<section class="partial- mt-5 ms-5 me-5 shadow">
 				
 					<!-- TABLES Y FORMS -->
-					<jsp:include page="partials/table-cliente.jsp"></jsp:include>
-					<jsp:include page="partials/form-cliente.jsp"></jsp:include>
+
+						<jsp:include page="partials/collapse.jsp"></jsp:include>
+						
+						<jsp:include page="partials/table-cliente.jsp"></jsp:include>
+						
+						<jsp:include page="partials/table-pedido.jsp"></jsp:include>
+						
+						<jsp:include page="partials/table-subpedido.jsp"></jsp:include>
+						
 					
 				</section>		
 				

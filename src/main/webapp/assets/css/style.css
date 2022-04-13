@@ -17,14 +17,23 @@ body {
     width: 250px;
 }
 
-.navbar {
+.navbar,
+.btn-primary,
+.btn-primary:focus {
 	color: var(--color-main);
 	background-color: var(--color-inicio);
+	border-color: var(--color-text1);
+}
+
+.btn-primary:hover {
+	color: var(--color-text);
+	background-color: var(--color-tbody-hover);
+	border-color: var(--color-text);
 }
 
 .nav-pills .nav-link.active {
 	background-color: var(--color-inicio);
-	color: black;
+	color: var(--color-text1);
 }
 
 .img-perfil-contenedor {
@@ -81,4 +90,13 @@ body {
 
 .input-group-append {
 	cursor: pointer;
+}
+
+.card {
+	background-color: var(--color-main);
+}
+
+.usuario-inactivo {
+	background-color: var(--color-thead);
+	color: var(--color-text1);
 }
