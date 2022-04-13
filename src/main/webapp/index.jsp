@@ -22,6 +22,8 @@
 				
 					<!-- TABLES Y FORMS -->
 
+						<jsp:include page="partials/jumbotron.jsp"></jsp:include>
+
 						<jsp:include page="partials/collapse.jsp"></jsp:include>
 						
 						<jsp:include page="partials/table-cliente.jsp"></jsp:include>

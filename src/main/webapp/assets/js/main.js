@@ -14,7 +14,7 @@ var btnCollapse = $('.btn-collapse');
 var formSubpedido = $('.form-subpedido');
 var formProducto = $('.form-subpedido-producto');
 var formServicio = $('.form-subpedido-servicio');
-
+var jumbotron = $('.container-presentacion');
 
 tableCliente.hide();
 formCliente.hide();
@@ -48,6 +48,7 @@ function imprimir(obj) {
         
         document.getElementById('sitio').innerHTML = msg;   
 
+		jumbotron.hide();
 		tableCliente.hide();
 		formCliente.hide();
 		tablePedido.hide();
@@ -162,18 +163,3 @@ $(function(){
 	startDate: '-3d'
 	});
 });
-
-
-/*$(function() {
-      $('#btn-submit').on('click', function() {
-
-		var valueDropdown = $("#dropdownMenuButton1").html();
-		
-          $.post('#', {
-              "valueDropdown": valueDropdown
-            },function(data) {
-              console.log('procesamiento finalizado', data);
-          });
-      })
-
-})*/

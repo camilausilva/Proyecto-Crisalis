@@ -100,3 +100,14 @@ body {
 	background-color: var(--color-thead);
 	color: var(--color-text1);
 }
+
+.container-presentacion {
+	background-color: var(--color-thead);
+	color: var(--color-text) !important;
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+.container-heart {
+	text-align: center;
+}

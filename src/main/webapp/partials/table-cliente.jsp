@@ -96,5 +96,5 @@
 
 </table>
 
-<%-- <% System.out.println(request.getParameter("btn-editar")); %>
-<% System.out.println(request.getParameter("btn-borrar")); %> --%>
+ <% System.out.println(request.getParameter("btn-editar")); %>
+<%-- <% System.out.println(request.getParameter("btn-borrar")); %> --%>

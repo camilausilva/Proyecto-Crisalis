@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -204,8 +205,6 @@ public class PersonaDAOImp implements PersonaDAO {
 		return datos.executeUpdate();
 	}
 
-
-
 	private int getIdCliente() throws SQLException {
 		String query = "select ISNULL((select top 1 id"
 					 + "    from cliente"
@@ -216,5 +215,20 @@ public class PersonaDAOImp implements PersonaDAO {
 			idCliente = rs.getInt("idCliente");
 		return idCliente;
 	} 
+	
+//	public ArrayList<List<String>> getPersonas(String idCliente) throws SQLException {
+//		ArrayList<List<String>> clientes = new ArrayList<List<String>>();
+//		String query =    "SELECT * FROM persona WHERE idCliente = " + idCliente;
+//		
+//		ResultSet rs = CRUD.executeQuery(query);
+//		
+//		while (rs.next())
+//			clientes.add(new ArrayList<String>(Arrays.asList(	String.valueOf(rs.getInt("id")),
+//																rs.getString("nombre"),
+//																rs.getString("apellido"),
+//																rs.getString("DNI"),
+//																String.valueOf(rs.getInt("pertenece_a")))));
+//		return clientes;
+//	}
 	
 }

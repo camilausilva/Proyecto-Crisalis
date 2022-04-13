@@ -211,4 +211,18 @@ public class EmpresaDAOImp implements EmpresaDAO {
 		return empresas;
 	}
 	
+//	public ArrayList<List<String>> getEmpresas(String idCliente) throws SQLException {
+//		ArrayList<List<String>> clientes = new ArrayList<List<String>>();
+//		String query =    "SELECT * FROM empresa WHERE idCliente = " + idCliente;
+//		
+//		ResultSet rs = CRUD.executeQuery(query);
+//		
+//		while (rs.next())
+//			clientes.add(new ArrayList<String>(Arrays.asList(	String.valueOf(rs.getInt("id")),
+//																rs.getString("razon_social"),
+//																rs.getString("CUIT"),
+//																rs.getString("inicio_actividad"))));
+//		return clientes;
+//	}
+	
 }

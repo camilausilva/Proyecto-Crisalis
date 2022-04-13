@@ -3,6 +3,8 @@
    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 
+
+
 <%@page import="dao.imp.ClienteDAOImp" %>
 <%@page import="dao.imp.PersonaDAOImp" %>
 <%@page import="dao.imp.EmpresaDAOImp" %>
@@ -23,6 +25,7 @@ String rsActividad = request.getParameter("actividades-empresa");
 String rsDNI = request.getParameter("documento-persona");
 String rsCUIT = request.getParameter("documento-empresa");
 String rsPertenece = request.getParameter("select-cliente");
+String rsIdClienteEdit = request.getParameter("btn-editar");
 
 ClienteService cliS;
 cliS = new ClienteService();
@@ -32,14 +35,12 @@ EmpresaService empS;
 empS = new EmpresaService();
 
 if(request.getParameter("btn-save") != null) {
-	cliS.addCliente(rsTipo);
-	if(rsTipo.equals("Persona"))
+	 cliS.addCliente(rsTipo);
+ 	if(rsTipo.equals("Persona"))
 		perS.addPersona(rsNombre, rsApellido, rsDNI, rsPertenece);
 	else
-		empS.addEmpresa(rsRazon, rsActividad, rsCUIT);
+		empS.addEmpresa(rsRazon, rsActividad, rsCUIT); 
 }
-
-
 
 %>
 
@@ -130,5 +131,7 @@ if(request.getParameter("btn-save") != null) {
     </div>
 	
     <button type="submit" class="btn btn-dark btn-block mt-5 mb-3 text-white" id="btn-submit" name="btn-save">ACTUALIZAR DATOS</button>
-
+	<input type="hidden" name="input-editar" id="input-editar" placeholder="<%=request.getParameter("btn-editar")%>"/>	
 </form>
+
+ <% System.out.println(request.getParameter("btn-editar")); %>
