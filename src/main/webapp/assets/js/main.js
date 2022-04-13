@@ -15,6 +15,7 @@ var formSubpedido = $('.form-subpedido');
 var formProducto = $('.form-subpedido-producto');
 var formServicio = $('.form-subpedido-servicio');
 
+
 tableCliente.hide();
 formCliente.hide();
 formEmpresa.hide();
@@ -28,6 +29,9 @@ formSubpedido.hide();
 btnCollapse.hide();
 
 formServicio.hide();
+
+$("#input-dropdown").val("Persona");
+$("#btn-submit").val(null);
 
 document.getElementById('sitio').innerHTML = " HOME";
 
@@ -75,7 +79,7 @@ if ( $(".form-cliente").length ) {
     formEmpresa.hide();
     formPersona.show();
     $("#dropdownMenuButton1").html("Persona");
-    
+	$("#input-dropdown").val("Persona");
     this.classList.add("active");
     $("#dropdown-cliente-empresa").removeClass(" active");
   })
@@ -83,7 +87,8 @@ if ( $(".form-cliente").length ) {
   document.getElementById('dropdown-cliente-empresa').addEventListener('click', function(){
     formPersona.hide();
     formEmpresa.show();
-    $("#dropdownMenuButton1").html("Empresa");
+	$("#dropdownMenuButton1").html("Empresa");
+	$("#input-dropdown").val("Empresa");
     this.classList.add("active");
     $("#dropdown-cliente-persona").removeClass(" active");
   })
@@ -106,6 +111,10 @@ if($('.form-subpedido').length) {
     $("#dropdown-producto").removeClass(" active");
   })
 }
+
+ document.getElementById('btn-submit').addEventListener('click', function(){ 
+	$("#btn-submit").val("ok");
+})
 
 document.getElementById('btn-acerca-de').addEventListener('click', function(){
     Swal.fire({
@@ -153,3 +162,18 @@ $(function(){
 	startDate: '-3d'
 	});
 });
+
+
+/*$(function() {
+      $('#btn-submit').on('click', function() {
+
+		var valueDropdown = $("#dropdownMenuButton1").html();
+		
+          $.post('#', {
+              "valueDropdown": valueDropdown
+            },function(data) {
+              console.log('procesamiento finalizado', data);
+          });
+      })
+
+})*/

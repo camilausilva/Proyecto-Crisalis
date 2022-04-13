@@ -48,7 +48,7 @@
 	    				<%=lst.get(i).get(4)%> <!-- Descripcion -->
 	    			</td>
 			      	<td>
-			      		<!-- Acciones -->
+			      	  <!-- Acciones -->
 					  <button type="button" class="btn btn-light" id="btn-table">
 					    <i class="fas fa-pen"></i>
 					  </button>
@@ -59,49 +59,7 @@
 				</tr>
 	    		<%}
 	    	%> 
-    
-    
-<!--       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>
-          <button type="button" class="btn btn-light" id="btn-table">
-            <i class="fas fa-pen"></i>
-          </button>
-          <button type="button" class="btn btn-light" id="btn-table">
-            <i class="fas fa-trash"></i>
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        <td class="">
-          <button type="button" class="btn btn-light" id="btn-table">
-            <i class="fas fa-pen"></i>
-          </button>
-          <button type="button" class="btn btn-light" id="btn-table">
-            <i class="fas fa-trash"></i>
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Lucas the Bird</td>
-        <td>@twitter</td>
-        <td>
-          <button type="button" class="btn btn-table btn-light">
-            <i class="fas fa-pen"></i>
-          </button>
-          <button type="button" class="btn btn-table btn-light">
-            <i class="fas fa-trash"></i>
-          </button>
-        </td>
-      </tr> -->
+
     </tbody>
 
 </table>

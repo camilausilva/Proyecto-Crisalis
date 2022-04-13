@@ -1,5 +1,7 @@
 package dao.imp;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -7,8 +9,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.catalina.tribes.ChannelSender;
+
 import dao.ClienteDAO;
 import jdbc.CRUD;
+import jdbc.JavaConnection;
 import model.Cliente;
 
 public class ClienteDAOImp implements ClienteDAO {
@@ -129,9 +134,25 @@ public class ClienteDAOImp implements ClienteDAO {
 	public int updateEstado(Integer id, Integer valor) throws SQLException {
 		return CRUD.updateEstado("cliente", valor, "id", id);
 	}
-
-
-
+	
+	public int addCliente(String tipo) throws SQLException {
+		
+		int numTipo = 0;
+		
+		if(tipo.equals("Empresa"))
+			numTipo = 1;
+		
+		String query = "insert into cliente (tipo, estado)"
+				+ " values (" 
+					+ numTipo + ", " 
+					+ 1 + ")";
+		
+		Connection connection = JavaConnection.getConnection();
+		PreparedStatement datos = connection.prepareStatement(query);
+		
+		return datos.executeUpdate();
+	}
+	
 	public ArrayList<List<String>> getClientes() throws SQLException {
 		
 		ArrayList<List<String>> clientes = new ArrayList<List<String>>();

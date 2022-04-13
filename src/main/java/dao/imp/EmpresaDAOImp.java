@@ -1,5 +1,7 @@
 package dao.imp;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ import java.util.List;
 
 import dao.EmpresaDAO;
 import jdbc.CRUD;
+import jdbc.JavaConnection;
 import model.Empresa;
 
 public class EmpresaDAOImp implements EmpresaDAO {
@@ -167,6 +170,31 @@ public class EmpresaDAOImp implements EmpresaDAO {
 	public int updateEstado(Integer id, Integer valor) throws SQLException {
 		return CRUD.updateEstado("Empresa", valor, "id", id);
 	}
+	
+	public int addEmpresa(String razonSocial, String inicioActividades, String CUIT) throws SQLException {
+		String query = "insert into empresa (idCliente, razon_social, inicio_actividad, CUIT)"
+				+ " values (" 
+					+ getIdCliente() + ", " 
+					+ "'" + razonSocial + "', "
+					+ "'" + inicioActividades + "', "
+					+ "'" + CUIT + "')";
+		
+		Connection connection = JavaConnection.getConnection();
+		PreparedStatement datos = connection.prepareStatement(query);
+		
+		return datos.executeUpdate();
+	}
+	
+	private int getIdCliente() throws SQLException {
+		String query = "select ISNULL((select top 1 id"
+					 + "    from cliente "
+				     + "    order by id desc), 1) as 'idCliente'";
+		ResultSet rs = CRUD.executeQuery(query);
+		Integer idCliente = 1;
+		if(rs.next())
+			idCliente = rs.getInt("idCliente");
+		return idCliente;
+	} 
 	
 	public ArrayList<List<String>> getEmpresas() throws SQLException {
 		

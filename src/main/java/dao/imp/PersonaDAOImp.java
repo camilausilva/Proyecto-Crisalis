@@ -1,18 +1,23 @@
 package dao.imp;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.oracle.wls.shaded.org.apache.regexp.recompile;
+import com.oracle.wls.shaded.org.apache.xml.utils.XMLStringFactory;
+
 import dao.PersonaDAO;
 import jdbc.CRUD;
+import jdbc.JavaConnection;
 import model.Persona;
 
 public class PersonaDAOImp implements PersonaDAO {
 	
-	PersonaDAOImp Persona = new PersonaDAOImp();
 	ClienteDAOImp clienteDAOImp = new ClienteDAOImp();
 	
 	private static final List<String>  columnas = 	Collections.unmodifiableList(
@@ -160,5 +165,56 @@ public class PersonaDAOImp implements PersonaDAO {
 	public int updateEstado(Integer id, Integer valor) throws SQLException {
 		return CRUD.updateEstado("persona", valor, "id", id);
 	}
+	
+	public int addPersona(String nombre, String apellido, String DNI, String pertenece) throws SQLException {
+		String query = "insert into persona (idCliente, nombre, apellido, DNI)"
+				+ " values (" 
+					+ getIdCliente() + ", " 
+					+ "'" + nombre + "', "
+					+ "'" + apellido + "', "
+					+ "'" + DNI + "')";
+		
+		int value = 0;
+		
+		Connection connection = JavaConnection.getConnection();
+		PreparedStatement datos = connection.prepareStatement(query);
+		
+		value += datos.executeUpdate();
+		
+		if(!pertenece.equals("0") && pertenece != null)
+			value += addEmpresaPersona(pertenece);
+		
+		return value;
+	}
+	
+	private int addEmpresaPersona(String pertenece) throws SQLException {
+		
+		String query = "insert into empresa_persona"
+				+ " values ( "
+				+ "    (select top 1 id"
+				+ "    from persona"
+				+ "    order by id desc), "
+				+      pertenece  + " ) ";
+		
+	
+				
+		Connection connection = JavaConnection.getConnection();
+		PreparedStatement datos = connection.prepareStatement(query);
+		
+		return datos.executeUpdate();
+	}
+
+
+
+	private int getIdCliente() throws SQLException {
+		String query = "select ISNULL((select top 1 id"
+					 + "    from cliente"
+				     + "    order by id desc), 1) as 'idCliente'";
+		ResultSet rs = CRUD.executeQuery(query);
+		Integer idCliente = 1;
+		if(rs.next())
+			idCliente = rs.getInt("idCliente");
+		return idCliente;
+	} 
 	
 }

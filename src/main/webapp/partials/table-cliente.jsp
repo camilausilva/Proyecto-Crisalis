@@ -79,7 +79,7 @@
 	    				<%=lst.get(i).get(5)%> <!-- Acciones -->
 	    			</td>
 			      	<td>
-				      	<form method="post" action="#clientes">
+				      	<form method="post" action="#">
 						  <button type="submit" class="btn btn-light" id="btn-table" name="btn-editar" value="<%=lst.get(i).get(0)%>">
 						    <i class="fas fa-pen"></i>
 						  </button>
